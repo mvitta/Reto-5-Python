@@ -1,0 +1,23 @@
+      # se analiza si se repiten valores
+      
+    
+
+        print(contadores)
+
+        # Aplicando METODO BURBUJA para ordenar las filas de contadores
+        # y las filas de categorias
+        # teniendo en cuenta los valores
+        for i in range(len(contadores[0])):
+            for j in range(len(contadores[0]) - 1):
+                if contadores[0][j + 1] > contadores[0][j]:
+
+                    aux = contadores[0][j + 1]
+                    temp = contadores[1][j + 1]
+
+                    contadores[0][j + 1] = contadores[0][j]
+                    contadores[1][j + 1] = contadores[1][j]
+
+                    contadores[0][j] = aux
+                    contadores[1][j] = temp
+
+        print(contadores)

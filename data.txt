@@ -1,0 +1,41 @@
+capital,id_zona,acidez,materia_organica,p2o5,ca,aptitud
+Leticia,0,6.25,3.26,41,3.98,marginalmente apto
+Medellin,1,7.34,6.17,76,14.5,marginalmente apto
+Arauca,2,7.77,2.23,67,6.65,no apto
+Barranquilla,3,9.2,3.7,51,11.9,no apto
+Cartagena,4,8.09,2.05,75,7.27,no apto
+Tunja,5,5.85,3.02,71,11.46,marginalmente apto
+Manizales,6,7.15,7.82,77,4.75,marginalmente apto
+Florencia,7,7.29,5.15,77,4.74,marginalmente apto
+Yopal,8,10.32,6.21,66,14.4,no apto
+Popayan,9,5.16,7.16,75,4.01,moderadamente apto
+Valledupar,10,9.63,5.27,58,5.81,no apto
+Quibdo,11,9.68,2.69,70,9.72,no apto
+Monteria,12,8.43,7.05,47,4.56,no apto
+Bogota,13,5.7,3.84,78,4.09,marginalmente apto
+Inirida,14,3.6,2.69,60,4.76,no apto
+San Jose del Guaviare,15,5.89,4.07,72,2.62,moderadamente apto
+Neiva,16,9.62,4.94,60,5.2,no apto
+Rioacha,17,4.51,4.47,65,14.36,marginalmente apto
+Santa Marta,18,6.36,2.08,62,8.93,no apto
+Villavicencio,19,5.51,6.13,79,4.81,sumamente apto
+Pasto,20,4.5,1.14,44,10.86,no apto
+Cucuta,21,8.95,4.85,57,10.86,no apto
+Mocoa,22,6.17,6.83,52,14.4,sumamente apto
+Armenia,23,6.3,1.03,54,3.77,no apto
+Pereira,24,4.51,3.03,78,6.41,marginalmente apto
+San Andres,25,7.74,1.14,45,11.85,no apto
+Bucaramanga,26,6.17,4.76,60,3.54,moderadamente apto
+Sincelejo,27,4.75,4.56,63,8.45,marginalmente apto
+Ibague,28,9.26,2.57,59,11.49,no apto
+Cali,29,6.63,5.63,58,12.98,moderadamente apto
+Mitu,30,9.32,4.43,56,8.74,no apto
+Puerto Carreno,31,7.46,5.51,71,13.17,marginalmente apto
+Leticia,32,5.98,7.46,52,6.24,sumamente apto
+Medellin,33,6.5,6.36,65,6.2,sumamente apto
+Arauca,34,9.7,6.01,73,7.88,no apto
+Barranquilla,35,9.32,2.78,64,2.98,no apto
+Cartagena,36,6.94,1.71,47,1.85,no apto
+Tunja,37,6.25,7.57,72,14.09,sumamente apto
+Manizales,38,10.34,3.01,49,3.68,no apto
+Florencia,39,9.48,2.46,46,1.7,no apto

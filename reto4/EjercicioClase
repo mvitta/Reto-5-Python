@@ -1,0 +1,197 @@
+import numpy as np
+"""
+ 
+LactoCaribe Ltda. usa 5 camiones para la distribución de leche a sus 10 puntos de distribución.
+ 
+La empresa se encuentra interesada en medir la eficiencia de cada uno de los 5 camiones. Por este motivo, 
+LactoCaribe te solicita crear un sistema que dada una matriz de asignación con los siguientes campos: 
+ 
+Punto de distribución, Identificación de camión, Cantidad de litros asignados, Tiempo de despacho asignado, 
+ 
+y una matriz de registro con los siguientes campos: 
+ 
+Punto de distribución, Identificación de camión, Cantidad de litros despachados y Tiempo de despacho registrado 
+ 
+calcule los siguientes indicadores de desempeño para cada camión:
+ 
+    1.	Eficiencia en tiempos de despacho = (Tiempo de despacho registrado) / Tiempo de despacho asignado x 100
+    2.	Tasa de entrega (Lt/min) = Cantidad de litros despachados / Tiempo total de despacho
+    3.	Nivel de Cumplimiento de los despachos = Litros despachados / Total de litros asignados x 100
+ 
+PROBLEMA        :   Ineficiente medición de la eficiencia de los camiones
+ 
+META            :   calcule los siguientes indicadores de desempeño para cada camión:
+ 
+                        1.	Eficiencia en tiempos de despacho = (Tiempo de despacho registrado) / Tiempo de despacho asignado x 100
+                        2.	Tasa de entrega (Lt/min) = Cantidad de litros despachados / Tiempo total de despacho
+                        3.	Nivel de Cumplimiento de los despachos = Litros despachados / Total de litros asignados x 100
+ 
+ANÁLISIS
+    Entradas    :   [desp], Registro de despachos diarios con el formato indicadores  ==>             Usuario
+                    [entr], Registro diario de entregas con el formato especificado   ==> Usuario
+                    [ncam], Cantidad de camiones, numérico, entero, constante (5)  ==> Sistema
+                    [npun], Cantidad de puntos de distribución, numérico, entero, constante (10) ==> Sistema
+ 
+    Salidas     :   Eficiencia en tiempos de despacho por camión
+                    Tasa de entrega (Lt/min) por camión
+                    Nivel de Cumplimiento de los despachos por camión
+ 
+ 
+    Proceso     :   a)  Leer las Entradas
+                    b)  Determinar por cada camión litros entregados, entregas, incumplimientos
+                    c)  Calcular indicadores por cada camión  
+ 
+DISEÑO
+ 
+    ESTRUCTURAS DE DATOS:
+ 
+    Asignación (Lo que se planifica - el plan de entregas)
+ 
+    +-------+--------+--------+---------+
+    | Punto | Camión | Litros | Tiempo  |
+    +-------+--------+--------+---------+
+    |     8 |      2 |    100 |       2 |
+    +-------+--------+--------+---------+
+ 
+    Registrado (Lo que se ejecuta - el registro de lo que se hizo)
+ 
+    +-------+--------+--------+---------+
+    | Punto | Camión | Litros | Tiempo  |
+    +-------+--------+--------+---------+
+    |     8 |      2 |    100 |       3 |
+    +-------+--------+--------+---------+
+ 
+    Usando los conceptos aprendidos dentro del curso:
+    1.	Diseña la solución al problema presentado
+    2.	Codifica la solución
+    3.	Durante la etapa de pruebas, el usuario requiere que modifiques la solución para incluir las siguientes validaciones
+            i.	Que los valores de litros y tiempos asignados no sean 0 o negativos.
+            ii.	Que los valores de litros y tiempos de despacho no sean 0 o negativos.
+            iii.	Si una de las condiciones no se cumple, el valor incluido para ese punto de distribución y para ese camión deberá ser ignorado en el cálculo.  
+"""
+ 
+def mostrar_matriz(mat):
+    print()
+    for i in range(len(mat)):
+        for j in range(len(mat[i])):
+            print(mat[i][j], end=' | ')
+        print("\n")
+ 
+def mostrar_matriz1(mat):
+    print(f"Matriz: ************************************************************")
+    print(f"|Camion\t |Eficiencia\t |Tasa\t |Cumplimiento\t |Ent. Tiempo\t |")
+    print()
+    for i in range(len(mat)):
+        print(end="|")
+        for j in range(len(mat[i])):
+            if j == 1 or j==3 or j==4:
+                print('{:06,.2f}'.format(mat[i][j]), end=" %\t |")
+            elif (j==0):
+                print("%d" % mat[i][j], end="\t |")
+            else:
+                print(f"{mat[i][j]:06,.2f}", end=" |")     
+ 
+        print("\n") 
+ 
+ 
+def Validar(mat_asig,mat_reg):
+ 
+    for i in range(len(mat_asig)):
+ 
+        if mat_asig[i][2] <= 0 or mat_asig[i][3] <=0:
+ 
+            print(f"Error en los litros/tiempos asignados, punto: {mat_asig[i][0]} camion: {mat_asig[i][1]} ")
+ 
+        if mat_reg[i][2] <= 0 or mat_reg[i][3] <=0:
+            print(f"Error en los litros/tiempos registrados, punto: {mat_reg[i][0]} camion: {mat_reg[i][1]} ")
+ 
+    for i in range(len(mat_asig)):
+ 
+        if mat_asig[i][2] <= 0:
+            mat_reg[i][2] = 0
+            mat_asig[i][2] = 0
+ 
+        if mat_asig[i][3] <= 0:
+            mat_reg[i][3] = 0
+            mat_asig[i][3] = 0
+ 
+        if mat_reg[i][2] <= 0:
+            mat_reg[i][2] = 0
+            mat_asig[i][2] = 0
+ 
+        if mat_reg[i][3] <= 0:
+            mat_reg[i][3] = 0
+            mat_asig[i][3] = 0
+ 
+ 
+ 
+ 
+ 
+def Control_Lactocaribe(mat_asig, mat_reg):
+    print("\n")
+    print(" *** Control de servicio - LACTOCARIBE LTDA *** ")
+    print("matrices Iniciales")
+    mostrar_matriz(mat_asig)
+    print("-------------------------")
+    mostrar_matriz(mat_reg)
+ 
+    Validar(mat_asig, mat_reg)
+ 
+    print("matrices finales")
+    mostrar_matriz(mat_asig)
+    print("-------------------------")
+    mostrar_matriz(mat_reg)
+ 
+    #Eficiencia en tiempos de despacho = (Tiempo de despacho registrado) / Tiempo de despacho asignado x 100
+ 
+    #2.	Tasa de entrega (Lt/min) = Cantidad de litros despachados / Tiempo total de despacho
+    # 3.	Nivel de Cumplimiento de los despachos = Litros despachados / Total de litros asignados x 100
+ 
+    matriz = np.zeros([5,5])
+ 
+    for i in range(1,6):
+ 
+        matriz[i-1][0] = i     
+        sum_tiempo_asig = 0
+        sum_tiempo_reg  = 0
+        sum_litros_reg  = 0
+        sum_litros_asig = 0
+        for j in range(len(mat_asig)):
+ 
+            if mat_asig[j][1] == i:
+                sum_tiempo_asig += mat_asig[j][3] 
+                sum_litros_asig += mat_asig[j][2]
+ 
+            if mat_reg[j][1] == i:
+                sum_tiempo_reg += mat_reg[j][3] 
+                sum_litros_reg += mat_reg[j][2]
+ 
+        eficiencia = round((sum_tiempo_reg/sum_tiempo_asig) * 100, 2)
+        tasa = round((sum_litros_reg / sum_tiempo_reg), 2)
+        nivel = round((sum_litros_reg/sum_litros_asig) * 100, 2)
+        matriz[i-1][1] = eficiencia
+        matriz[i-1][2] = tasa
+        matriz[i-1][3] = nivel
+ 
+ 
+ 
+#a.	Entregas a tiempo = Nº de entregas a tiempo / Nº total de entregas realizadas x 100 Entendiendo que las “entregas a tiempo” excluyen a aquellas que registraron retraso.Entendiendo que una entrega registra retraso, cuando el tiempo registrado es mayor al tiempo asignado
+ 
+    for i in range(1,6):
+        entregaAtiempo=0
+        totalEntregas=0
+        for j in range(len(mat_asig)):
+            if mat_asig[j][1] == i:
+                totalEntregas += 1
+                if mat_reg[j][3] <= mat_asig[j][3]:
+                    entregaAtiempo += 1
+ 
+        EntregasCamion= round((entregaAtiempo/totalEntregas) * 100, 2)
+ 
+        matriz[i-1][4] = EntregasCamion      
+ 
+    mostrar_matriz1(matriz)
+ 
+Control_Lactocaribe([[1,5,0,10],[2,4,2,35],[3,1,1462,0],[4,3,1222,35],[5,2,2000,44],[6,3,1389,52],[7,1,1500,35],[8,1,1419,50],[9,5,1355,44],[10,4,1000,36]],
+ 
+[[1,5,1168,52],[2,4,1224,51],[3,1,1379,33],[4,3,1281,52],[5,2,1200,38],[6,3,1320,34],[7,1,1225,52],[8,1,1149,51],[9,5,1424,34],[10,4,1000,36]])
